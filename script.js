@@ -68,7 +68,6 @@ function checkLocation(position) {
                 case "Zone 3":
                     // Action pour la Zone 3
                     console.log("Action pour la Zone 3");
-                    document.write("ok")
                     break;
                 // Ajoutez des cas pour d'autres zones si nécessaire
             }
