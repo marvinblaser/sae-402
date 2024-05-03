@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="stock/img/piano.jpg" type="image/x-icon">
+    <title>Piano Memo</title>
+</head>
+<body>
+    <div class="start-page">
+        <div class="start">
+            <div class="start-button">Commencer</div>
+        </div>
+        <div class="blur"></div>
+    </div>
+    <div class="loose">
+        <span class="loose-text">C'est perdu !</span>
+        <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"/></svg>
+        </a>
+    </div>
+    <div class="level">Niveau : <span class="level-number">0</span></div>
+    <div class="piano">
+        <div class="tile tile-a" id="a">A</div>
+        <div class="tile tile-b" id="b">B</div>
+        <div class="tile tile-c" id="c">C</div>
+        <div class="tile tile-d" id="d">D</div>
+        <div class="tile tile-d" id="e">E</div>
+    </div>
+    <div class="playable">
+        <div class="light light-top off"></div>
+        <div class="light light-bottom"></div>
+    </div>
+    <div class="help">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#dbdbdb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    </div>
+    <div class="skip">
+        Do you want to pass the game?
+        <div class="buttons">
+          <span class="back button">Back</span>
+          <span class="skip-button button">
+            <a href="../index.html">Pass</a>
+          </span>
+        </div>
+      </div>
+    <div class="ini-button win">
+        <div class="win-button">
+            <span>Well done you won!</span>
+            <div class="next-game">
+                <a href="../index.html">Let's go ahead</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

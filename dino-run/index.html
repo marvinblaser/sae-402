@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chrome Dino Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="game" class="game">
+    <div id="score" class="score">0</div>
+    <img src="stock/img/ground.png" class="ground" />
+    <img src="stock/img/ground.png" class="ground" />
+    <img src="stock/img/dino-stationary.png" id="dino" class="dino" />
+  </div>
+  <div id="gameover-message" class="loose hide">
+    <span class="loose-text">Game over!</span>
+    <a href="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000000"
+        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38" />
+      </svg>
+    </a>
+  </div>
+  <div class="start-page">
+    <div class="start ini-button">
+      <div class="start-button">Start</div>
+    </div>
+    <div class="blur"></div>
+  </div>
+  <div class="jump">
+    JUMP
+  </div>
+  <div class="ini-button win">
+    <div class="win-button">
+      <span>Well done you won!</span>
+      <div class="next-game">
+        <a href="">Play next</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000000"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h13M12 5l7 7-7 7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="help">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dbdbdb"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+  </div>
+  <div class="skip">
+    Do you want to pass the game?
+    <div class="buttons">
+      <span class="back button">Back</span>
+      <span class="skip-button button">
+        <a href="../index.html">Pass</a>
+      </span>
+    </div>
+  </div>
+  <script src="/script.js"></script>
+</body>
+
+</html>
