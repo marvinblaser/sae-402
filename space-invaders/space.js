@@ -91,7 +91,7 @@ function update() {
         return;
     }
 
-    if (score >= 15000){
+    if (score >= 12000){
         end();
         return;
     }
