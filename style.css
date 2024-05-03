@@ -3,8 +3,15 @@
 }
 
 body{
+    font-family:'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    background-image: url(stock/img/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 a{
@@ -14,12 +21,15 @@ a{
 
 .menu{
     position: absolute;
-    left: 100%;
+    top: 0;
+    left: -100%;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: orange;
+    transition: .4s;
 }
 
 nav{
@@ -33,4 +43,14 @@ header{
     width: 100vw;
     padding: 10px;
     background-color: orange;
+}
+
+.left0{
+    left: 0%;
+}
+
+.cross{
+    position: absolute;
+    top: 2%;
+    left: 5%;
 }
