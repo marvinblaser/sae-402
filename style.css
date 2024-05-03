@@ -94,4 +94,52 @@ header{
     padding: 10px;
     background-color: orange;
     border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+    justify-content: center;
+    margin: 100px 0 0 0;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    margin: 100px 0 0 0;
+}
+
+.title-info{
+    padding: 20px 100px;
+    background-color: orange;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.info-popup{
+    position: absolute;
+    width: 90%;
+    background-color: orange;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    padding: 10px 20px;
+    transform: translate(-50%, -50%);
+}
+
+.info-popup p{
+    font-size: 20px;
+}
+
+.info-popup svg{
+    margin: 0 0 0 90%;
+}
+
+.popup-story img{
+    width: 100%;
 }

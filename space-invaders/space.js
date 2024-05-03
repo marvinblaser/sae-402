@@ -85,7 +85,7 @@ function update() {
         return;
     }
 
-    if (score >= 12000){
+    if (score >= 20000){
         end();
         return;
     }

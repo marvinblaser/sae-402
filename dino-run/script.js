@@ -40,7 +40,7 @@ function update(time) {
     return;
   }
 
-  if (score >= 20) {
+  if (score >= 200) {
     end();
     return;
   }

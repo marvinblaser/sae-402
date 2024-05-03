@@ -4,6 +4,26 @@ let cross = document.querySelector(".cross");
 let cross_popup = document.querySelector(".cross-popup");
 let map_popup = document.querySelector(".map-popup");
 let map_menu = document.querySelector(".map-menu");
+let story = document.querySelector(".story");
+let rules = document.querySelector(".rules");
+let cross_story = document.querySelector(".cross-story");
+let popup_story = document.querySelector(".popup-story");
+let cross_rules = document.querySelector(".cross-rules");
+let popup_rules = document.querySelector(".popup-rules");
+
+story.addEventListener("click", ()=>{
+    popup_story.classList.remove("hide")
+})
+cross_story.addEventListener("click", ()=>{
+    popup_story.classList.add("hide")
+})
+
+rules.addEventListener("click", ()=>{
+    popup_rules.classList.remove("hide")
+})
+cross_rules.addEventListener("click", ()=>{
+    popup_rules.classList.add("hide")
+})
 
 cross_popup.addEventListener("click", function(){
     map_popup.style.opacity = "0"
@@ -78,6 +98,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 var first_game = L.marker([47.74517815858541, 7.336845007529663]).addTo(map).bindPopup("1st Game");
+first_game.openPopup();
 var second_game = L.marker([47.74829163081054, 7.3413309769544215]).addTo(map).bindPopup("2nd Game");
 var third = L.marker([47.74326626503717, 7.34248483050478]).addTo(map).bindPopup("3rd Game");
 
