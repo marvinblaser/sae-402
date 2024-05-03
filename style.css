@@ -56,18 +56,31 @@ header{
 }
 
 .map-popup{
+    opacity: 0;
+    z-index: -1;
     height: 60%;
     width: 90%;
     padding: 50px 0 0 0;
-    background-color: black;
+    background-color: orange;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 100;
+    border-radius: 20px 20px 0 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-#mapid{
+#map{
     width: 100%;
     height: 100%;
+}
+
+.cross-popup{
+    position: absolute;
+    top: 1%;
+    right: 2%;
+}
+
+.hide{
+    display: none;
 }
