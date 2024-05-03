@@ -3,7 +3,7 @@ const SPEED_SCALE = 0.00001;
 let blurPage = document.querySelector(".blur");
 let startButton = document.querySelector(".start-button");
 let start = document.querySelector(".start");
-let jumpButton = document.querySelector(".jump"); // Sélection de la div "jump"
+let jumpButton = document.querySelector(".jump");
 let win = document.querySelector(".win");
 
 const game = document.querySelector("#game");
@@ -19,8 +19,8 @@ help.addEventListener("click", ()=>{
   document.querySelector(".skip").style.display = "flex";
 })
 
-jumpButton.addEventListener("click", () => { // Ajout d'un gestionnaire d'événements de clic à la div "jump"
-  onJump(); // Appel de la fonction onJump() lorsque la div "jump" est cliquée
+jumpButton.addEventListener("click", () => {
+  onJump();
 });
 
 startButton.addEventListener("click", () => {
@@ -29,12 +29,10 @@ startButton.addEventListener("click", () => {
   startGame();
 });
 
-/* general variables */
 let lastTime;
 let speedScale;
 let score;
 
-/* frame update */
 function update(time) {
   if (lastTime == null) {
     lastTime = time;
@@ -76,7 +74,6 @@ function startGame() {
   window.requestAnimationFrame(update);
 }
 
-/* speeds up the game over time */
 function updateSpeedScale(delta) {
   speedScale += delta * SPEED_SCALE;
 }
@@ -86,7 +83,6 @@ function updateScore(delta) {
   scoreDisplay.textContent = Math.floor(score);
 }
 
-/* collision conditions */
 function checkCollision(rect1, rect2) {
   return (
     rect1.left < rect2.right &&
@@ -108,24 +104,17 @@ function handleGameOver() {
   gameoverMessage.classList.remove("hide");
 }
 
-/* HANDLING CSS PROPERTIES */
-
-/* get property value */
 function getCustomProperty(elem, prop) {
   return parseFloat(getComputedStyle(elem).getPropertyValue(prop)) || 0;
 }
 
-/* set property value */
 function setCustomProperty(elem, prop, value) {
   elem.style.setProperty(prop, value);
 }
 
-/* increment the property value */
 function incrementCustomProperty(elem, prop, inc) {
   setCustomProperty(elem, prop, getCustomProperty(elem, prop) + inc);
 }
-
-/* GROUND MOVEMENT */
 
 const GROUND_SPEED = 0.1;
 const grounds = document.querySelectorAll(".ground");
@@ -148,8 +137,6 @@ function updateGround(delta, speedScale) {
     }
   });
 }
-
-/* DINOSAUR MOVEMENT */
 
 const dino = document.querySelector("#dino");
 const JUMP_SPEED = 0.45;
@@ -200,13 +187,11 @@ function handleJump(delta) {
   let previousBottom = getCustomProperty(dino, "--bottom");
   incrementCustomProperty(dino, "--bottom", yVelocity * delta);
 
-  // Si le dinosaure commence à descendre après avoir atteint son point le plus haut
   if (previousBottom >= 0 && getCustomProperty(dino, "--bottom") < 0) {
     setCustomProperty(dino, "--bottom", 0);
     isJumping = false;
     yVelocity = 0;
   } else {
-    // La gravité continue à agir pour faire descendre le dinosaure
     yVelocity -= GRAVITY * delta;
   }
 }
@@ -217,8 +202,6 @@ function onJump() {
   yVelocity = JUMP_SPEED;
   isJumping = true;
 }
-
-/* ADD CACTUS */
 
 const CACTUS_SPEED = 0.1;
 const CACTUS_INTERVAL_MIN = 500;

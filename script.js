@@ -61,12 +61,8 @@ function checkLocation(position) {
             return;
         }
     }
-
-    // Si l'utilisateur n'est pas dans aucune des zones spécifiques
-    console.log("L'utilisateur n'est pas dans une zone spécifique");
 }
 
-// Obtenir la position de l'utilisateur
 navigator.geolocation.watchPosition(checkLocation, function(error) {
     console.error("Erreur de géolocalisation :", error);
 });
@@ -114,37 +110,30 @@ var latlngs = [
 
 var pin = L.icon({
     iconUrl: 'stock/img/pin.png',
-    iconSize:     [35, 40], // size of the icon
-    iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0, -41] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [35, 40],
+    iconAnchor:   [12, 41],
+    popupAnchor:  [0, -41]
 });
 
 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
-var marker; // Déclarer la variable du marqueur en dehors de la fonction de rappel
+var marker;
 
 if (navigator.geolocation) {
-    // Demander à l'utilisateur l'autorisation d'accéder à sa position
     var watchId = navigator.geolocation.watchPosition(
-        // Fonction de rappel en cas de succès
         function(position) {
-            // Récupérer les coordonnées de latitude et longitude de l'utilisateur
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
 
-            // Supprimer l'ancien marqueur s'il existe déjà
             if (marker) {
                 map.removeLayer(marker);
             }
 
-            // Créer un nouveau marqueur avec la position de l'utilisateur
             marker = L.marker([lat, lng], {icon: pin}).addTo(map).bindPopup('Your location');
 
-            // Centrer la carte sur la nouvelle position de l'utilisateur
             map.setView([lat, lng]);
         }
     );
 } else {
-    // La géolocalisation n'est pas prise en charge par le navigateur
     console.error("Geolocation is not supported by this browser.");
 }

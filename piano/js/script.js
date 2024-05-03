@@ -12,9 +12,6 @@ let win = document.querySelector(".win")
 startButton.addEventListener("click", ()=>{
   start.remove();
   blurPage.remove();
-  // setTimeout(()=>{
-  //     playing();
-  // }, "1000")
 });
 
 document.querySelector(".back").addEventListener("click", ()=>{
