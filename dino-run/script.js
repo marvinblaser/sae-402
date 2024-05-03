@@ -42,7 +42,7 @@ function update(time) {
     return;
   }
 
-  if (score >= 300) {
+  if (score >= 20) {
     end();
     return;
   }

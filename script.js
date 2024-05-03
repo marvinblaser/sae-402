@@ -23,37 +23,67 @@ cross.addEventListener("click", function(){
 })
 
 
-// // Coordonnées spécifiques (latitude et longitude)
-// var specificLatitude = 47.72986334201951;
-// var specificLongitude = 7.301729263688992;
+var specificLocations = [
+    { latitude: 47.745182428813486, longitude: 7.336843972538822, zone: "Zone 1" },
+    { latitude: 47.74828815789348, longitude: 7.34131985574736, zone: "Zone 2" },
+    { latitude: 47.743271058471, longitude: 7.342539279245852, zone: "Zone 3" }
+    // Ajoutez autant de localisations que vous le souhaitez sous forme d'objets {latitude, longitude, zone}
+];
 
-// // Rayon de la zone (en mètres)
-// var zoneRadius = 10; // Par exemple, 100 mètres
+// Rayon de la zone (en mètres)
+var zoneRadius = 10; // Par exemple, 100 mètres
 
-// // Fonction pour vérifier si la position de l'utilisateur est dans la zone spécifique
-// function checkLocation(position) {
-//     var latitude = position.coords.latitude;
-//     var longitude = position.coords.longitude;
+// Fonction pour vérifier la zone de la position de l'utilisateur
+function checkLocation(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
 
-//     // Calculer la distance en latitude et longitude
-//     var deltaLatitude = Math.abs(latitude - specificLatitude);
-//     var deltaLongitude = Math.abs(longitude - specificLongitude);
+    // Parcourir toutes les localisations spécifiques
+    for (var i = 0; i < specificLocations.length; i++) {
+        var specificLatitude = specificLocations[i].latitude;
+        var specificLongitude = specificLocations[i].longitude;
+        var zone = specificLocations[i].zone;
 
-//     // Convertir la différence en latitude et longitude en distance en mètres (approximativement)
-//     var distance = Math.sqrt(Math.pow(deltaLatitude * 111000, 2) + Math.pow(deltaLongitude * 111000, 2));
+        // Calculer la distance en latitude et longitude
+        var deltaLatitude = Math.abs(latitude - specificLatitude);
+        var deltaLongitude = Math.abs(longitude - specificLongitude);
 
-//     // Vérifier si la distance est inférieure ou égale au rayon de la zone
-//     if (distance <= zoneRadius) {
-//         // Affichez l'élément si l'utilisateur est dans la zone
-//     } else {
-//         // Masquez l'élément si l'utilisateur n'est pas dans la zone
-//     }
-// }
+        // Convertir la différence en latitude et longitude en distance en mètres (approximativement)
+        var distance = Math.sqrt(Math.pow(deltaLatitude * 111000, 2) + Math.pow(deltaLongitude * 111000, 2));
 
-// // Obtenir la position de l'utilisateur
-// navigator.geolocation.getCurrentPosition(checkLocation, function(error) {
-//     console.error("Erreur de géolocalisation :", error);
-// });
+        // Vérifier si la distance est inférieure ou égale au rayon de la zone
+        if (distance <= zoneRadius) {
+            // Affichez un message spécifique à la zone où se trouve l'utilisateur
+            console.log("L'utilisateur est dans la", zone);
+            // Déclenchez des actions spécifiques à chaque zone ici
+            switch (zone) {
+                case "Zone 1":
+                    // Action pour la Zone 1
+                    console.log("Action pour la Zone 1");
+                    break;
+                case "Zone 2":
+                    // Action pour la Zone 2
+                    console.log("Action pour la Zone 2");
+                    break;
+                case "Zone 3":
+                    // Action pour la Zone 3
+                    console.log("Action pour la Zone 3");
+                    break;
+                // Ajoutez des cas pour d'autres zones si nécessaire
+            }
+            return; // Sortir de la fonction si la zone est trouvée
+        }
+    }
+
+    // Si l'utilisateur n'est pas dans aucune des zones spécifiques
+    console.log("L'utilisateur n'est pas dans une zone spécifique");
+}
+
+// Obtenir la position de l'utilisateur
+navigator.geolocation.getCurrentPosition(checkLocation, function(error) {
+    console.error("Erreur de géolocalisation :", error);
+});
+
 
 
 
