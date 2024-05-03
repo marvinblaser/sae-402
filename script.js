@@ -97,36 +97,38 @@ var latlngs = [
 
 var pin = L.icon({
     iconUrl: 'stock/img/pin.png',
-    iconSize:     [38, 50], // size of the icon
-    iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [35, 40], // size of the icon
+    iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -41] // point from which the popup should open relative to the iconAnchor
 });
 
 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
-// Check if geolocation is supported by the browser
 if (navigator.geolocation) {
-    // Prompt user for permission to access their location
-    navigator.geolocation.getCurrentPosition(
-      // Success callback function
-      function(position){
-        // Get the user's latitude and longitude coordinates
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-  
-        // Do something with the location data, e.g. display on a map
-        console.log(`Latitude: ${lat}, longitude: ${lng}`);
-        L.marker([lat, lng], {icon: pin}).addTo(map)
-        .bindPopup('Your location')
+    // Demander à l'utilisateur l'autorisation d'accéder à sa position
+    var watchId = navigator.geolocation.watchPosition(
+        // Fonction de rappel en cas de succès
+        function(position) {
+            // Récupérer les coordonnées de latitude et longitude de l'utilisateur
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
 
-      },
-      // Error callback function
-      function(error) {
-        // Handle errors, e.g. user denied location sharing permissions
-        console.error("Error getting user location:", error);
-      }
+            // Créer un marqueur avec la position de l'utilisateur
+            var marker = L.marker([lat, lng], {icon: pin}).addTo(map).bindPopup('Your location');
+
+            // Mettre à jour la position du marqueur avec les nouvelles coordonnées
+            marker.setLatLng([lat, lng]);
+
+            // Centrer la carte sur la nouvelle position de l'utilisateur
+            map.setView([lat, lng]);
+        },
+        // Fonction de rappel en cas d'erreur
+        function(error) {
+            // Gérer les erreurs, par exemple si l'utilisateur refuse le partage de sa position
+            console.error("Error getting user location:", error);
+        }
     );
-  } else {
-    // Geolocation is not supported by the browser
+} else {
+    // La géolocalisation n'est pas prise en charge par le navigateur
     console.error("Geolocation is not supported by this browser.");
-  }
+}

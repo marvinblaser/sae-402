@@ -37,6 +37,7 @@ nav{
     flex-direction: column;
     gap: 20px;
     font-size: 40px;
+    padding: 0 0 50px 0;
 }
 
 header{
@@ -83,4 +84,14 @@ header{
 
 .hide{
     display: none;
+}
+
+.map-menu{
+    position: absolute;
+    right: 3%;
+    bottom: 2%;
+    width: 15%;
+    padding: 10px;
+    background-color: orange;
+    border-radius: 50%;
 }
