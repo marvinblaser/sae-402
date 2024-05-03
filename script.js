@@ -104,6 +104,8 @@ var pin = L.icon({
 
 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
+var marker; // Déclarer la variable du marqueur en dehors de la fonction de rappel
+
 if (navigator.geolocation) {
     // Demander à l'utilisateur l'autorisation d'accéder à sa position
     var watchId = navigator.geolocation.watchPosition(
@@ -113,19 +115,16 @@ if (navigator.geolocation) {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
 
-            // Créer un marqueur avec la position de l'utilisateur
-            var marker = L.marker([lat, lng], {icon: pin}).addTo(map).bindPopup('Your location');
+            // Supprimer l'ancien marqueur s'il existe déjà
+            if (marker) {
+                map.removeLayer(marker);
+            }
 
-            // Mettre à jour la position du marqueur avec les nouvelles coordonnées
-            marker.setLatLng([lat, lng]);
+            // Créer un nouveau marqueur avec la position de l'utilisateur
+            marker = L.marker([lat, lng], {icon: pin}).addTo(map).bindPopup('Your location');
 
             // Centrer la carte sur la nouvelle position de l'utilisateur
             map.setView([lat, lng]);
-        },
-        // Fonction de rappel en cas d'erreur
-        function(error) {
-            // Gérer les erreurs, par exemple si l'utilisateur refuse le partage de sa position
-            console.error("Error getting user location:", error);
         }
     );
 } else {
