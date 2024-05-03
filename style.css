@@ -54,3 +54,7 @@ header{
     top: 2%;
     left: 5%;
 }
+
+#mapid{
+    height: 400px;
+}

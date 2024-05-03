@@ -43,3 +43,10 @@ cross.addEventListener("click", function(){
 // navigator.geolocation.getCurrentPosition(checkLocation, function(error) {
 //     console.error("Erreur de géolocalisation :", error);
 // });
+
+navigator.geolocation.getCurrentPosition(function (position) {
+    console.log(position);
+    console.log(position.coords.latitude)
+    console.log(position.coords.longitude)
+    var marker = L.marker([position.coords.latitude,position.coords.longitude]).addTo(mymap);
+    })
