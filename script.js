@@ -58,11 +58,51 @@ cross.addEventListener("click", function(){
 
 
 
-var map = L.map('map').setView([47.74973052576295, 7.336601220694807], 13);
+var map = L.map('map').setView([47.74973052576295, 7.336601220694807], 15);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+var first_game = L.marker([47.74517815858541, 7.336845007529663]).addTo(map).bindPopup("1st Game");
+var second_game = L.marker([47.74829163081054, 7.3413309769544215]).addTo(map).bindPopup("2nd Game");
+var third = L.marker([47.74326626503717, 7.34248483050478]).addTo(map).bindPopup("3rd Game");
+
+
+var latlngs = [
+    [47.74518506270431, 7.33685555644084],
+    [47.745217492657254, 7.337139679910473],
+    [47.74560009131443, 7.337408998259031],
+    [47.745592439368856, 7.337936255307616],
+    [47.74577581618694, 7.337912038915831],
+    [47.74599006948327, 7.338719993961501],
+    [47.74646193375209, 7.339209318848317],
+    [47.74634715635069, 7.3397365758969],
+    [47.74704346871129, 7.34001727393692],
+    [47.74715314343303, 7.340347283744305],
+    [47.74761989607686, 7.3399565825057],
+    [47.747869849314384, 7.340241073718965],
+    [47.74827028210114, 7.341322140329371],
+    [47.748296301968495, 7.341398282651669],
+    [47.747746903905835, 7.342060812354868],
+    [47.74766540362383, 7.342064002056753],
+    [47.74690897755831, 7.342983186163047],
+    [47.74631272609473, 7.342718440904489],
+    [47.7461005046161, 7.341830235382743],
+    [47.74586074541286, 7.341568503467863],
+    [47.744439702508245, 7.342445256036417],
+    [47.743869941406494, 7.342720249096022],
+    [47.7432842960981, 7.342534398303128]
+];
+
+var pin = L.icon({
+    iconUrl: 'stock/img/pin.png',
+    iconSize:     [38, 50], // size of the icon
+    iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
 // Check if geolocation is supported by the browser
 if (navigator.geolocation) {
@@ -76,8 +116,9 @@ if (navigator.geolocation) {
   
         // Do something with the location data, e.g. display on a map
         console.log(`Latitude: ${lat}, longitude: ${lng}`);
-        L.marker([lat, lng]).addTo(map)
+        L.marker([lat, lng], {icon: pin}).addTo(map)
         .bindPopup('Your location')
+
       },
       // Error callback function
       function(error) {
