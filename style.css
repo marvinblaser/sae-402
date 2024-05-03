@@ -55,6 +55,19 @@ header{
     left: 5%;
 }
 
+.map-popup{
+    height: 100%;
+    width: 90%;
+    padding: 50px 0 0 0;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
 #mapid{
-    height: 400px;
+    width: 90%;
+    height: 500px;
 }
